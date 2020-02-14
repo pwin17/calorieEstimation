@@ -1,0 +1,1 @@
+CREATE DATABASE calorie_estimation;
