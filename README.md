@@ -5,7 +5,9 @@ Computer Vision project that integrates image recognition model by ImageAI and v
 
 Packages:
 <ul>
-  <li>ImageAi</li>
-  <li>OpenCV</li>
-  <li>Tensorflow</li>
+  <li>python3.6</li>
+  <li>imageai</li>
+  <li>opencv-python</li>
+  <li>tensorflow==1.15</li>
+  <li>keras</li>
 </ul>
