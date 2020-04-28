@@ -20,35 +20,21 @@ public class take_picture extends AppCompatActivity {
     //Button _btn_cam;
     private ImageView _imageView;
     private static final int REQUEST_IMAGE_CAPTURE = 101;
+    Button _btn_next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_picture);
         _imageView = findViewById(R.id.imageView);
-        //_btn_cam = (Button)findViewById(R.id.btn_cam);
-
-
-            //Intent imageTakeIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            //if (imageTakeIntent.resolveActivity(getPackageManager())!=null){
-            //    startActivityForResult(imageTakeIntent, REQUEST_IMAGE_CAPTURE);
-
-
-
-        /*_btnregister.setOnClickListener(new View.OnClickListener(){
+        _btn_next = (Button)findViewById(R.id.btn_next);
+        _btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                db = openHelper.getWritableDatabase();
-                String fname = _fname.getText().toString();
-                String lname = _lname.getText().toString();
-                String email = _user_email.getText().toString();
-                String pswd = _user_pswd.getText().toString();
-                insertdata(fname, lname, email, pswd);
-                Toast.makeText(getApplicationContext(), "register successfully", Toast.LENGTH_LONG).show();
-
+            public void onClick(View view) {
+                Intent intent = new Intent(take_picture.this, foodInfo.class);
+                startActivity(intent);
             }
-
-        });*/
+        });
     }
 
     public void btn_cam(View view) {
@@ -57,6 +43,7 @@ public class take_picture extends AppCompatActivity {
             startActivityForResult(imageTakeIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
+
 
 
     @Override
