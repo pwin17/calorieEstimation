@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class login extends AppCompatActivity {
     SQLiteDatabase db;
     SQLiteOpenHelper openHelper;
-    Button _btn_login;
+    Button _btn_login, _btn_skip;
     EditText _user_email, _user_pswd;
     Cursor cursor;
 
@@ -27,6 +27,7 @@ public class login extends AppCompatActivity {
         openHelper = new database_helper(this);
         db = openHelper.getReadableDatabase();
         _btn_login = (Button)findViewById(R.id.btn_login);
+        _btn_skip = (Button)findViewById(R.id.btn_skip);
         _user_email = (EditText)findViewById(R.id.user_email);
         _user_pswd = (EditText)findViewById(R.id.user_pswd);
         _btn_login.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +43,13 @@ public class login extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
                     }
                 }
+            }
+        });
+        _btn_skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(login.this, export_data.class);
+                startActivity(intent);
             }
         });
     }

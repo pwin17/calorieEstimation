@@ -24,7 +24,7 @@ import java.util.Arrays;
 
 public class foodInfo extends AppCompatActivity {
 
-    TextView _api_result;
+    TextView _api_result, _textv2_density;
     EditText _food_name;
     Button _btn_calc;
 
@@ -32,10 +32,12 @@ public class foodInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_info);
-
+        Double density = getIntent().getExtras().getDouble("density");
         _api_result = (TextView)findViewById(R.id.api_view);
+        _textv2_density = (TextView)findViewById(R.id.textView_density);
         _food_name = (EditText)findViewById(R.id.food_name);
         _btn_calc = (Button)findViewById(R.id.btn_calc);
+        _textv2_density.setText(density.toString());
         _btn_calc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

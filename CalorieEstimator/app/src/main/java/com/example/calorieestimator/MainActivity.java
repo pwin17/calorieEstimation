@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         _btn_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, take_picture.class);
+                Intent intent = new Intent(MainActivity.this, export_data.class);
                 startActivity(intent);
             }
         });
