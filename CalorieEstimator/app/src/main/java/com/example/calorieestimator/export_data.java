@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,9 +36,13 @@ public class export_data extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 fr_density = getCSVDATA(_txt_fruitName.getText().toString());
-                Intent intent = new Intent(export_data.this, foodInfo.class);
-                intent.putExtra("density", fr_density);
-                startActivity(intent);
+                if (fr_density != 0){
+                    Intent intent = new Intent(export_data.this, import_pictures.class);
+                    intent.putExtra("density", fr_density);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Sorry, the fruit is not in our database yet. Please put another fruit.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -7,10 +7,13 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.opencv.android.OpenCVLoader;
 
 public class MainActivity extends AppCompatActivity {
     SQLiteOpenHelper openHelper;
@@ -18,7 +21,14 @@ public class MainActivity extends AppCompatActivity {
     Button _btnregister, _btn_to_login, _btn_skip;
     EditText _fname, _lname, _user_email, _user_pswd;
 
-
+    private static String TAG = "MAIN ACTIVITY";
+    static {
+        if (OpenCVLoader.initDebug()){
+            Log.i(TAG, "OPENCV Loaded Successfully");
+        } else {
+            Log.i(TAG, "OPENCV Not Loaded");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
