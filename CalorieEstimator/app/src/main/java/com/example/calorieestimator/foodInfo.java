@@ -26,7 +26,6 @@ import java.math.BigDecimal;
 public class foodInfo extends AppCompatActivity {
 
     TextView _api_result, _title;
-    EditText _food_name;
     Button _btn_calc, _btn_start;
 
     @Override
@@ -34,6 +33,7 @@ public class foodInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_info);
         final String fruit = getIntent().getExtras().getString("Fruit");
+        //final Double sphereMass = getIntent().getExtras().getDouble("sphere mass");
         final Double mass = getIntent().getExtras().getDouble("mass");
         _api_result = (TextView)findViewById(R.id.api_view);
         _title = (TextView)findViewById(R.id.textView_title);
@@ -72,6 +72,7 @@ public class foodInfo extends AppCompatActivity {
                                 JSONObject nutrients = foodNutrients.getJSONObject(3);
                                 String amount = nutrients.getString("nutrientNumber");
                                 Double _amount = Double.parseDouble(amount);
+                                //Double sphereFinal = _amount/100 * sphereMass;
                                 _amount = _amount/100 * mass;
                                 BigDecimal bd = BigDecimal.valueOf(_amount);
                                 bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);

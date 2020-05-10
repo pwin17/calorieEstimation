@@ -20,6 +20,7 @@ public class top_ruler extends AppCompatActivity {
     Double real_width = 0.0;
     Double real_height = 0.0;
     Double mass = 0.0;
+    //Double sphereMass = 0.0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +62,12 @@ public class top_ruler extends AppCompatActivity {
                     length = findClosest(all);
                 }
                 mass = getMass(length,_real_width,_real_height, density);
+                //sphereMass = getSphereMass(length, real_width,_real_height, density);
                 //Toast.makeText(getApplicationContext(), mass.toString(), Toast.LENGTH_SHORT).show();
                 if (mass != 0.0){
                     Intent intent = new Intent(top_ruler.this, foodInfo.class);
                     intent.putExtra("mass", mass);
+                    //intent.putExtra("sphere mass", sphereMass);
                     intent.putExtra("Fruit", fruit);
                     startActivity(intent);
                 } else{
@@ -97,12 +100,21 @@ public class top_ruler extends AppCompatActivity {
         }
         return closest;
     }
+    /*
+    private Double getSphereMass(Double length, Double width, Double height, Double density){
+        Double average = (length+width+height)/3;
+        Double volume = (4/3) * Math.PI * Math.pow(average/2, 3);
+        Double mass = volume * density;
+        return mass;
+    }
+    */
+
 
     private Double getMass(Double length, Double width, Double height, Double density){
         Double volume, mass;
         volume = length*width*height;
         mass = volume * density;
-        return volume;
+        return mass;
     }
 
     private Double getValues(Integer focalLength, Double sizeInImg) {
