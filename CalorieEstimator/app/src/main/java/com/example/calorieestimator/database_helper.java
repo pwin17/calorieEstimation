@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class database_helper extends SQLiteOpenHelper{
+
     public static final String DATABASE_NAME="calories.db";
     public static final String TABLE_NAME="credentials";
     public static final String COL_1="ID";

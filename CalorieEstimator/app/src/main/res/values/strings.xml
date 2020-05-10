@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Calorie Estimator</string>
     <string name="title_activity_take_picture">take_picture</string>
+    <string name="please_pick_the_top_view_of_fruit">Please pick the top view of fruit:</string>
 </resources>

@@ -31,16 +31,22 @@ public class export_data extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_export_data);
         _txt_fruitName = (EditText)findViewById(R.id.txt_fruitName);
-        _btn_next = (Button)findViewById(R.id.btn_next);
+        //final String fruit = _txt_fruitName.getText().toString();
+        //final String _fruit = fruit.substring(0, 1).toUpperCase() + fruit.substring(1);
+        _btn_next = (Button)findViewById(R.id._btn_SideView);
         _btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fr_density = getCSVDATA(_txt_fruitName.getText().toString());
                 if (fr_density != 0){
+                    String fruit = _txt_fruitName.getText().toString();
+                    fruit = fruit.substring(0, 1).toUpperCase() + fruit.substring(1);
                     Intent intent = new Intent(export_data.this, import_pictures.class);
                     intent.putExtra("density", fr_density);
+                    intent.putExtra("Fruit", fruit);
                     startActivity(intent);
                 } else {
+                    //Toast.makeText(getApplicationContext(), _txt_fruitName.getText().toString(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(getApplicationContext(), "Sorry, the fruit is not in our database yet. Please put another fruit.", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -11,7 +11,6 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,33 +21,38 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class import_pictures extends AppCompatActivity {
+public class import_picture2 extends AppCompatActivity {
 
-    Button _get_side, to_side;
-    ImageView _side_view, _ruler;
+    ImageView top, ruler;
+    Button gallery, to_topRuler;
     private static final int IMAGE_PICK_CODE=1000;
     private static final int PERMISSION_CODE=1001;
     String focal_length;
     String pathStr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_import_pictures);
-        final Double density = getIntent().getExtras().getDouble("density");
+        setContentView(R.layout.activity_import_picture2);
+        final Double density = getIntent().getExtras().getDouble("Density");
         final String fruit = getIntent().getExtras().getString("Fruit");
-        _get_side = (Button)findViewById(R.id.btn_getSide);
-        to_side = (Button)findViewById(R.id._btn_toSideRuler);
-        _side_view = (ImageView)findViewById(R.id.imageView_side);
-        _ruler = (ImageView)findViewById(R.id.imageView_ruler);
+        final Double _real_width = getIntent().getExtras().getDouble("RealWidth");
+        final Double _real_height = getIntent().getExtras().getDouble("RealHeight");
+
+        top = (ImageView)findViewById(R.id.imageView_top);
+        ruler = (ImageView)findViewById(R.id.imageView_ruler);
+        gallery = (Button)findViewById(R.id.btn_gallery);
+        to_topRuler = (Button)findViewById(R.id._btn_TopRuler);
         final String ruler_URL = "https://catchydesk.com/wp-content/uploads/2019/04/Inch-ruler-actual-size.png";
-        _get_side.setOnClickListener(new View.OnClickListener() {
+        gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Picasso.get().load(ruler_URL).into(_ruler);
+                //Toast.makeText(getApplicationContext(), "Gallery", Toast.LENGTH_SHORT).show();
                 openGallery();
+                Picasso.get().load(ruler_URL).into(ruler);
             }
         });
-        to_side.setOnClickListener(new View.OnClickListener() {
+        to_topRuler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(getApplicationContext(), focal_length, Toast.LENGTH_SHORT).show();
@@ -56,18 +60,16 @@ public class import_pictures extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please select a picture", Toast.LENGTH_SHORT).show();
                 } else {
                     //Toast.makeText(getApplicationContext(), focal_length + density.toString(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(import_pictures.this, side_ruler.class);
-                    intent.putExtra("Focal_length", Integer.valueOf(focal_length));
-                    intent.putExtra("density", density);
+                    Intent intent = new Intent(import_picture2.this, top_ruler.class);
+                    intent.putExtra("Focal_length2", Integer.valueOf(focal_length));
+                    intent.putExtra("Density", density);
                     intent.putExtra("Fruit", fruit);
+                    intent.putExtra("RealWidth", _real_width);
+                    intent.putExtra("RealHeight", _real_height);
                     startActivity(intent);
                 }
-
-                //Toast.makeText(getApplicationContext(), side_path, Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
     private void openGallery(){
@@ -102,7 +104,8 @@ public class import_pictures extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE){
             Uri path = data.getData();
             pathStr = data.getData().getPath();
-            _side_view.setImageURI(data.getData());
+
+            top.setImageURI(data.getData());
             try{
                 InputStream in = getContentResolver().openInputStream(path);
                 ExifInterface exif = new ExifInterface(in);
@@ -111,7 +114,7 @@ public class import_pictures extends AppCompatActivity {
             } catch (IOException e){
                 e.printStackTrace();
             }
+
         }
     }
-
 }

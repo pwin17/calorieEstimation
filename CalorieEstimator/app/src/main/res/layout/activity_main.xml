@@ -10,8 +10,8 @@
         android:id="@+id/fname"
         android:layout_width="207dp"
         android:layout_height="53dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"
         android:ems="10"
         android:hint="first_name"
         android:inputType="textPersonName"
@@ -24,13 +24,14 @@
         android:id="@+id/lname"
         android:layout_width="199dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:ems="10"
         android:hint="last_name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/user_email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fname" />
 
@@ -38,7 +39,8 @@
         android:id="@+id/user_email"
         android:layout_width="209dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="23dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:ems="10"
         android:hint="email"
         android:inputType="textEmailAddress"
@@ -52,20 +54,21 @@
         android:id="@+id/user_pswd"
         android:layout_width="212dp"
         android:layout_height="53dp"
-        android:layout_marginTop="393dp"
-        android:layout_marginBottom="174dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btn_to_login"
+        app:layout_constraintBottom_toTopOf="@+id/btnregister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/user_email" />
 
     <Button
         android:id="@+id/btnregister"
         android:layout_width="121dp"
         android:layout_height="49dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="130dp"
         android:text="Register!"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,4 +101,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_to_login" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
